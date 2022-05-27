@@ -85,10 +85,10 @@ const Custom = () => {
                 <div className="tshirt-backgroundpicture"></div>
                 <div id="drawingArea" className="drawing-area" ref={drawingAreaRef}>
                     {second === '2' && (<Rnd onDrag={(e) => getPosition(e.x,e.y)} default={{ x: 60, y: 100, width: 320, height: 200, }} id="one" className="one" ref={shirtDesignRef}></Rnd>)}
-                    {second === '3' && (<Rnd default={{ x: 60, y: 100, width: 320, height: 200, }} id="two" className="two" ref={shirtDesignRef}></Rnd>)}
-                    {second === '4' && (<Rnd default={{ x: 60, y: 100, width: 320, height: 200, }} id="three" className="three" ref={shirtDesignRef}></Rnd>)}
-                    {second === '5' && (<Rnd default={{ x: 60, y: 100, width: 320, height: 200, }} id="four" className="four" ref={shirtDesignRef}></Rnd>)}
-                    {second === '6' && (<Rnd default={{ x: 60, y: 100, width: 320, height: 200, }} id="five" className="five" ref={shirtDesignRef}></Rnd>)}
+                    {second === '3' && (<Rnd onDrag={(e) => getPosition(e.x,e.y)} default={{ x: 60, y: 100, width: 320, height: 200, }} id="two" className="two" ref={shirtDesignRef}></Rnd>)}
+                    {second === '4' && (<Rnd onDrag={(e) => getPosition(e.x,e.y)} default={{ x: 60, y: 100, width: 320, height: 200, }} id="three" className="three" ref={shirtDesignRef}></Rnd>)}
+                    {second === '5' && (<Rnd onDrag={(e) => getPosition(e.x,e.y)} default={{ x: 60, y: 100, width: 320, height: 200, }} id="four" className="four" ref={shirtDesignRef}></Rnd>)}
+                    {second === '6' && (<Rnd onDrag={(e) => getPosition(e.x,e.y)} default={{ x: 60, y: 100, width: 320, height: 200, }} id="five" className="five" ref={shirtDesignRef}></Rnd>)}
                 </div>
             </div>
             

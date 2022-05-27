@@ -43,6 +43,7 @@ import CustomDetails from "./component/layout/Contact/CustomDetails"
 import VerificationCode from "./component/User/VerificationCode"
 import HiddenNavRoute from "./component/Route/HiddenNavRoute";
 import ShopRoute from './component/Route/ShopRoute';
+import Audit from "./component/Admin/Audit";
 
 function App() {
   
@@ -113,6 +114,7 @@ function App() {
         <ProtectedRoute isAdmin={true} exact path="/admin/dashboard" component={Dashboard} />
         <ProtectedRoute exact path="/admin/products" isAdmin={true} component={ProductList} />
         <ProtectedRoute exact path="/admin/product" isAdmin={true} component={NewProduct} />
+        <ProtectedRoute exact path="/admin/audit" isAdmin={true} component={Audit} />
 
         <ProtectedRoute exact path="/admin/product/:id" isAdmin={true} component={UpdateProduct} />
         <ProtectedRoute exact path="/admin/orders" isAdmin={true} component={OrderList} />

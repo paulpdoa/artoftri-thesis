@@ -90,9 +90,9 @@ export const loadUser = () => async (dispatch) => {
 };
 
 // Logout User
-export const logout = () => async (dispatch) => {
+export const logout = (email) => async (dispatch) => {
   try {
-    const { data } = await axios.get(`/api/v1/logout`);
+    const { data } = await axios.post(`/api/v1/logout`,{ email });
 
     dispatch({ type: LOGOUT_SUCCESS, payload: data.user });
    

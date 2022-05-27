@@ -56,7 +56,8 @@ const UserOptions = ({ user }) => {
   }
   function logoutUser() {
     window.localStorage.removeItem('user');
-    dispatch(logout());
+    dispatch(logout(window.localStorage.getItem('user_email')));
+    window.localStorage.removeItem('user_email');
     alert.success("Logout Successfully");
   }
 

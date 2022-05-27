@@ -41,7 +41,8 @@ const LoginSignUp = ({ location }) => {
   const loginSubmit = (e) => {
     e.preventDefault();
     dispatch(login(loginEmail, loginPassword));
-  };
+    window.localStorage.setItem('user_email', loginEmail);
+  }
 
   const registerSubmit = async (e) => {
     e.preventDefault();

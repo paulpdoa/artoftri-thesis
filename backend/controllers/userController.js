@@ -1,6 +1,7 @@
 const ErrorHander = require("../utils/errorhander");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const User = require("../models/userModel");
+const Audit = require("../models/auditModel");
 const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
@@ -59,6 +60,17 @@ module.exports.get_users = async(req,res) => {
 // Login User
 exports.loginUser = catchAsyncErrors(async (req, res, next) => {
   const { email, password } = req.body;
+  const user_action = 'Logged in';
+  const action_time = new Date().toLocaleTimeString();
+  const action_date = new Date().toLocaleDateString();
+
+  try {
+    const data = await Audit.create({ name:email,user_action,action_time,action_date });
+    console.log(`${email} already ${user_action}`);
+  }
+  catch(err) {
+    console.log(err);
+  }
 
   // checking if user has given password and email both
 
@@ -83,6 +95,19 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
 
 // Logout User
 exports.logout = catchAsyncErrors(async (req, res, next) => {
+  const { email } = req.body;
+  const user_action = 'Logged out';
+  const action_time = new Date().toLocaleTimeString();
+  const action_date = new Date().toLocaleDateString();
+
+  try {
+    const data = await Audit.create({ name:email,user_action,action_time,action_date });
+    console.log(`${email} already ${user_action}`);
+  }
+  catch(err) {
+    console.log(err);
+  }
+
   res.cookie("token", null, {
     expires: new Date(Date.now()),
     httpOnly: true,

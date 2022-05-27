@@ -24,12 +24,13 @@ const product = require("./routes/productRoute");
 const user = require("./routes/userRoute");
 const order = require("./routes/orderRoute");
 const customize = require("./routes/customRoute");
-
+const audit = require("./routes/auditRoute");
 
 app.use("/api/v1", product);
 app.use("/api/v1", user);
 app.use("/api/v1", order);
 app.use("/api/v1", customize);
+app.use("/api/v1", audit);
 
 
 // Middleware for Errors
