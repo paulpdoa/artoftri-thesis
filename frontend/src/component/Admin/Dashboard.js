@@ -54,15 +54,16 @@ const Dashboard = () => {
   };
 
   const doughnutState = {
-    labels: ["Out of Stock", "InStock"],
+    labels: products.map(product => product.name),
     datasets: [
       {
-        backgroundColor: ["#00A6B4", "#6800B4"],
+        backgroundColor: ["#2B2B2B","#6D5E5E","#C4C4C4","#E8E5E5"],
         hoverBackgroundColor: ["#4B5000", "#35014F"],
-        data: [outOfStock, products.length - outOfStock],
+        data: products.map(product => product.Stock),
       },
     ],
   };
+
   const submit = (id) => {
     html2canvas(document.getElementById("capture")).then(function (canvas) {
       const image = canvas.toDataURL("image/jpeg", 0.9);
@@ -108,7 +109,7 @@ const Dashboard = () => {
         <div className="doughnutChart">
           <Doughnut data={doughnutState} />
         </div>
-        <button className="buttonDownload" onClick={submit}>Download Dashboard result</button>
+        <button className="buttonDownload" onClick={submit}>Screenshot</button>
       </div>
     </div>
   );

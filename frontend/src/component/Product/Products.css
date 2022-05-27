@@ -12,8 +12,8 @@
   display: flex;
   flex-wrap: wrap;
   padding: 0 5vmax;
-  justify-content: center;
   min-height: 30vh;
+  margin-left:12em;
   font-family:'Poppins', sans-serif;
 }
 
@@ -23,7 +23,11 @@
   margin: 6vmax;
   font-family:'Poppins', sans-serif;
 }
-
+.productCard img {
+  width:100%;
+  height:20em;
+  object-fit:cover;
+}
 .pagination {
   display: flex;
   justify-content: center;

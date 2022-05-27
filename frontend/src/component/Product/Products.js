@@ -38,7 +38,7 @@ const Products = ({ match }) => {
 
   
   
-  const highestPrice = products.map(product => product.price);
+  // const highestPrice = products.map(product => product.price);
   const [price, setPrice] = useState([0, 25000]);
   const keyword = match.params.keyword;
 
@@ -46,7 +46,7 @@ const Products = ({ match }) => {
     setCurrentPage(e);
   };
 
-  const priceHandler = (event, newPrice) => {
+  const priceHandler = (e, newPrice) => {
     setPrice(newPrice);
   };
   let count = filteredProductsCount;
@@ -70,9 +70,9 @@ const Products = ({ match }) => {
             {products &&
               products.map((product) => (
                 <>
-                { product.Stock < 3 ? '' : 
-                <ProductCard key={product._id} product={product} />
-                } 
+                  { product.Stock < 3 ? '' : 
+                    <ProductCard key={product._id} product={product} />
+                  } 
                 </>
               ))}
           </div>
@@ -85,8 +85,9 @@ const Products = ({ match }) => {
               valueLabelDisplay="auto"
               aria-labelledby="range-slider"
               min={0}
-              max={Math.max(...highestPrice)}
+              max={500}
             />
+            
 
             <Typography>Categories</Typography>
             <ul className="categoryBox">

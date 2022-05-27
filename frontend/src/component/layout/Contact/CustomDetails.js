@@ -72,12 +72,13 @@ const ProductDetails = () => {
                   </div>
                   <div className="detailsBlock-3">
                     <h1>{`₱${customDetails.custom.price}`}</h1>
+                    <span>Size Ordered: { customDetails.custom.description.slice(0,1).toUpperCase() + '' + customDetails.custom.description.slice(1,customDetails.custom.description.length) }</span>
                     <div className="detailsBlock-3-1">
                       <div className="detailsBlock-3-1-1">
-                        <input readOnly type="number" value={customDetails.custom.Stock} />
-
+                        <span className="quantity-order-btn">Quantity Ordered: {customDetails.custom.Stock} pcs.</span>
                       </div>
                       <button
+                        className="custom-add-to-cart-btn"
                         disabled={customDetails.custom.Stock < 1 ? true : false}
                         onClick={addToCartHandler}
                       >
@@ -87,7 +88,7 @@ const ProductDetails = () => {
                   </div>
 
                   <div className="detailsBlock-4">
-                    Description : <p>{customDetails.custom.description}</p>
+                    Description : <p>This is a t-shirt that you designed. By Ordering this product, this will make you feel aesthetic</p>
                   </div>
                 </div>
               </div>

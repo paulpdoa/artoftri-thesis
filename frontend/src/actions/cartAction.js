@@ -6,7 +6,7 @@ import {
 import axios from "axios";
 
 // Add to Cart
-export const addItemsToCart = (id, quantity) => async (dispatch, getState) => {
+export const addItemsToCart = (id, quantity,size) => async (dispatch, getState) => {
   const { data } = await axios.get(`/api/v1/product/${id}`);
 
   dispatch({
@@ -18,6 +18,7 @@ export const addItemsToCart = (id, quantity) => async (dispatch, getState) => {
       image: data.product.images[0].url,
       stock: data.product.Stock,
       quantity,
+      shirt_size: size
     },
   });
 

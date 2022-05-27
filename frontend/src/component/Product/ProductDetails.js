@@ -48,8 +48,9 @@ const ProductDetails = ({ match }) => {
       history.push('/login');
       alert.error('Please login before adding to cart');
     } else {
-      dispatch(addItemsToCart(match.params.id, quantity));
+      dispatch(addItemsToCart(match.params.id, quantity, size));
       alert.success("Item Added To Cart");
+      history.push('/cart');
     }
   };
 

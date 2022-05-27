@@ -34,6 +34,7 @@ const ProcessOrder = ({ history, match }) => {
   const alert = useAlert();
 
   const [status, setStatus] = useState("");
+  const [paid,setPaid] = useState(false);
 
   useEffect(() => {
     if (error) {
@@ -93,18 +94,8 @@ const ProcessOrder = ({ history, match }) => {
                   <Typography>Payment</Typography>
                   <div className="orderDetailsContainerBox">
                     <div>
-                      <p
-                        className={
-                          order.paymentInfo &&
-                          order.paymentInfo.status === "COMPLETED"
-                            ? "greenColor"
-                            : "redColor"
-                        }
-                      >
-                        {order.paymentInfo &&
-                        order.paymentInfo.status === "COMPLETED"
-                          ? "PAID"
-                          : "NOT PAID"}
+                      <p className={ order.paymentInfo && order.paymentInfo.status === "COMPLETED" ? "greenColor" : "redColor" }>
+                        {order.paymentInfo && order.paymentInfo.status === "COMPLETED" ? "PAID" : "NOT PAID"}
                       </p>
                     </div>
 
@@ -119,9 +110,7 @@ const ProcessOrder = ({ history, match }) => {
                     <div>
                       <p
                         className={
-                          order.orderStatus && order.orderStatus === "Delivered"
-                            ? "greenColor"
-                            : "redColor"
+                          order.orderStatus && order.orderStatus === "Delivered" ? "greenColor" : "redColor"
                         }
                       >
                         {order.orderStatus && order.orderStatus}
@@ -159,7 +148,6 @@ const ProcessOrder = ({ history, match }) => {
                   onSubmit={updateOrderSubmitHandler}
                 >
                   <h1>Process Order</h1>
-
                   <div>
                     <AccountTreeIcon />
                     <select onChange={(e) => setStatus(e.target.value)}>

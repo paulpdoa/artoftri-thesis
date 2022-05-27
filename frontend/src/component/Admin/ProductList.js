@@ -47,8 +47,12 @@ const ProductList = ({ history }) => {
   }, [dispatch, alert, error, deleteError, history, isDeleted]);
 
   const columns = [
-    { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
-
+    { 
+      field: "id", 
+      headerName: "Product ID", 
+      minWidth: 200, 
+      flex: 0.5 
+    },
     {
       field: "name",
       headerName: "Name",
@@ -61,8 +65,17 @@ const ProductList = ({ history }) => {
       type: "number",
       minWidth: 150,
       flex: 0.3,
+      renderCell: (cellVal) => {
+        return (
+          <div style={{
+            color: cellVal.value < 3 ? 'red' : 'green',
+            fontSize: 18,
+            width: "100%",
+            textAlign: "right"
+          }}>{cellVal.value}</div>
+        )
+      }
     },
-
     {
       field: "price",
       headerName: "Price",
@@ -70,7 +83,6 @@ const ProductList = ({ history }) => {
       minWidth: 270,
       flex: 0.5,
     },
-
     {
       field: "actions",
       flex: 0.3,
