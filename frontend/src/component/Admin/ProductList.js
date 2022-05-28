@@ -48,6 +48,12 @@ const ProductList = ({ history }) => {
 
   const columns = [
     { 
+      field: "key", 
+      headerName: "ID", 
+      minWidth: 200, 
+      flex: 0.5 
+    },
+    { 
       field: "id", 
       headerName: "Product ID", 
       minWidth: 200, 
@@ -113,9 +119,10 @@ const ProductList = ({ history }) => {
   const rows = [];
 
   products &&
-    products.forEach((item) => {
+    products.forEach((item,key) => {
       rows.push({
-        id: item._id,
+        key: key + 1,
+        id: item._id.slice(0,8),
         stock: item.Stock,
         price: item.price,
         name: item.name,

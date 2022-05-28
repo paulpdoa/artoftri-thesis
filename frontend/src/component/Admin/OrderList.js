@@ -50,6 +50,7 @@ const OrderList = ({ history }) => {
   }, [dispatch, alert, error, deleteError, history, isDeleted]);
 
   const columns = [
+    { field: "key", headerName: "ID", minWidth: 300, flex: 1 },
     { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
 
     {
@@ -109,9 +110,10 @@ const OrderList = ({ history }) => {
   const rows = [];
 
   orders &&
-    orders.forEach((item) => {
+    orders.forEach((item,key) => {
       rows.push({
-        id: item._id,
+        key: key + 1,
+        id: item._id.slice(0,8),
         itemsQty: item.orderItems.length,
         amount: item.totalPrice,
         status: item.orderStatus,
