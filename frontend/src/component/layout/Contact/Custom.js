@@ -14,6 +14,7 @@ const Custom = () => {
 
     const [x,setX] = useState(0);
     const [y,setY] = useState(0);
+    const [shirt,setShirt] = useState(false);
 
     const history = useHistory();
     const alert = useAlert();
@@ -74,6 +75,11 @@ const Custom = () => {
                     const image = canvas.toDataURL("image/jpeg");
                     const dataURI = image;
                     saveAs(dataURI, 'Design.png');
+                    if(!shirt) {
+                        setShirt(true);
+                    } else {
+                        history.push('/upload/design');
+                    }
                 });
             }
         });
@@ -82,7 +88,7 @@ const Custom = () => {
         <div className='containerForCustom'>
             <style>{`#tshirt-div{background-color:${first};}`}</style>
             <div id="tshirt-div">
-                <div className="tshirt-backgroundpicture"></div>
+                <div className={ !shirt ? "tshirt-backgroundpicture" : "tshirt-back" }></div>
                 <div id="drawingArea" className="drawing-area" ref={drawingAreaRef}>
                     {second === '2' && (<Rnd onDrag={(e) => getPosition(e.x,e.y)} default={{ x: 60, y: 100, width: 320, height: 200, }} id="one" className="one" ref={shirtDesignRef}></Rnd>)}
                     {second === '3' && (<Rnd onDrag={(e) => getPosition(e.x,e.y)} default={{ x: 60, y: 100, width: 320, height: 200, }} id="two" className="two" ref={shirtDesignRef}></Rnd>)}
@@ -105,6 +111,7 @@ const Custom = () => {
                 <Select options={color} onChange={(e) => (changeHandler(e))} isOptionSelected="size"></Select>
                 <button className="button" onClick={submit}>Save Custom</button>
                 <button className="button" onClick={refresh}>Reset</button>
+                <button onClick={() => setShirt(!shirt)} className="back-shirt-btn">{ shirt ? 'Design Back' : 'Design Front'}</button>
                 <div id='output'></div>
             </div>
 

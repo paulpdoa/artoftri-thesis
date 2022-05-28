@@ -64,9 +64,9 @@ const Audit = () => {
     const rows = [];
 
   audits &&
-    audits.forEach((item) => {
+    audits.forEach((item,key) => {
       rows.push({
-        id: item._id,
+        id: key + 1,
         email: item.name,
         time: item.action_time,
         date: item.action_date,

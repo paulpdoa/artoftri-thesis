@@ -64,14 +64,14 @@ const Dashboard = () => {
     ],
   };
 
-  const submit = (id) => {
-    html2canvas(document.getElementById("capture")).then(function (canvas) {
-      const image = canvas.toDataURL("image/jpeg", 0.9);
-      console.log(image)
-      const dataURI = image;
-      saveAs(dataURI, 'Report.png');
-    });
-  }
+  // const submit = (id) => {
+  //   html2canvas(document.getElementById("capture")).then(function (canvas) {
+  //     const image = canvas.toDataURL("image/jpeg", 0.9);
+  //     console.log(image)
+  //     const dataURI = image;
+  //     saveAs(dataURI, 'Report.png');
+  //   });
+  // }
   return (
     <div id="capture" className="dashboard">
       <MetaData title="Dashboard - Admin Panel" />
@@ -109,7 +109,7 @@ const Dashboard = () => {
         <div className="doughnutChart">
           <Doughnut data={doughnutState} />
         </div>
-        <button className="buttonDownload" onClick={submit}>Screenshot</button>
+        {/* <button className="buttonDownload" onClick={submit}>Screenshot</button> */}
       </div>
     </div>
   );
