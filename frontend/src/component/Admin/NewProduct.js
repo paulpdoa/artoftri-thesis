@@ -23,9 +23,24 @@ const NewProduct = ({ history }) => {
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [Stock, setStock] = useState(0);
+  const [stock, setStock] = useState();
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
+
+  const [sizes,setSizes] = useState([]);
+  const [size,setSize] = useState('');
+
+  const addShirtStock = () => {
+    const data = { size,stock }
+
+    if(Number(stock) < 1) { 
+      alert.error('Not allowed, enter greater than 0'); 
+    } else {
+      setSizes(current => [...current,data]);
+      setSize('');
+      setStock('');
+    } 
+  }
 
   const categories = [
     "Men",
@@ -55,7 +70,7 @@ const NewProduct = ({ history }) => {
     myForm.set("price", price);
     myForm.set("description", description);
     myForm.set("category", category);
-    myForm.set("Stock", Stock);
+    myForm.set("shirt_size", sizes);
 
     images.forEach((image) => {
       myForm.append("images", image);
@@ -118,7 +133,6 @@ const NewProduct = ({ history }) => {
 
             <div>
               <DescriptionIcon />
-
               <textarea
                 placeholder="Product Description"
                 value={description}
@@ -139,6 +153,27 @@ const NewProduct = ({ history }) => {
                 ))}
               </select>
             </div>
+            
+            <div className="shirt-stock-size-container">
+              <select value={size} onChange={(e) => setSize(e.target.value)} className="stock-select">
+                <option hidden>Choose Size</option>
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
+              </select>
+              <input placeholder="Enter stock" value={stock} onChange={(e) => e.target.value < 1 ? alert.error('Must be greater than 0') : setStock(e.target.value) } className="stock-stock" type="number" />
+              <span onClick={addShirtStock} className="stock-btn">Add More</span>
+            </div>
+            { sizes.length > 0 && 
+              <div className="added-stock-container">
+                { sizes && sizes.map(siz => (
+                  <div>
+                    <span>Size: { siz.size }</span>
+                    <span>Qty: { siz.stock }</span>
+                  </div>
+                )) }
+              </div>
+            }
 
             <div>
               <StorageIcon />

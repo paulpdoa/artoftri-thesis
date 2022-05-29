@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect,useState } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import "./productList.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -16,6 +16,8 @@ const ProductList = ({ history }) => {
   const dispatch = useDispatch();
 
   const alert = useAlert();
+  
+  const [sizes,setSizes] = useState([]);
 
   const { error, products } = useSelector((state) => state.products);
 
@@ -83,6 +85,13 @@ const ProductList = ({ history }) => {
       }
     },
     {
+      field: "size",
+      headerName: "Size",
+      type: "number",
+      minWidth: 270,
+      flex: 0.5,
+    },
+    {
       field: "price",
       headerName: "Price",
       type: "number",
@@ -126,6 +135,7 @@ const ProductList = ({ history }) => {
         stock: item.Stock,
         price: item.price,
         name: item.name,
+        size: item.shirt_size.map(siz => siz.size)
       });
     });
 
