@@ -15,6 +15,17 @@ const productSchema = mongoose.Schema({
     required: [true, "Please Enter product Price"],
     maxLength: [8, "Price cannot exceed 8 characters"],
   },
+  shirt_size: [
+    {
+      size: {
+        type: String,
+        required: true
+      },
+      stock: {
+        type: Number
+      }
+    }
+  ],
   ratings: {
     type: Number,
     default: 0,
